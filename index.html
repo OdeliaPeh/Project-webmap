@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1476px;
+            height: 735px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/FM_ISO_1.js"></script>
+        <script src="data/TELLineTR_ISO_2.js"></script>
+        <script src="data/KP_ISO_3.js"></script>
+        <script src="data/TELLineTK_ISO_4.js"></script>
+        <script src="data/TELLineMP_ISO_5.js"></script>
+        <script src="data/TELLineMT_ISO_6.js"></script>
+        <script src="data/S_ISO_7.js"></script>
+        <script src="data/TELLineB_ISO_8.js"></script>
+        <script src="data/TELLineall_buildings_9.js"></script>
+        <script src="data/TELLineTELStage4_10.js"></script>
+        <script src="data/MRTEntranceStage4_11.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:18, minZoom:12
+        }).fitBounds([[1.2716242792483698,103.85802739778669],[1.3278419114142723,103.97034332614325]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_OpenStreetMap_0');
+        map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
+        var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 12,
+            maxZoom: 18,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_FM_ISO_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_FM_ISO_1_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 399.000000 ) {
+                return {
+                pane: 'pane_FM_ISO_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 399.000000 && feature.properties['cost_level'] <= 598.000000 ) {
+                return {
+                pane: 'pane_FM_ISO_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,167,90,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 598.000000 && feature.properties['cost_level'] <= 797.000000 ) {
+                return {
+                pane: 'pane_FM_ISO_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,224,171,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 797.000000 && feature.properties['cost_level'] <= 996.000000 ) {
+                return {
+                pane: 'pane_FM_ISO_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_FM_ISO_1');
+        map.getPane('pane_FM_ISO_1').style.zIndex = 401;
+        map.getPane('pane_FM_ISO_1').style['mix-blend-mode'] = 'normal';
+        var layer_FM_ISO_1 = new L.geoJson(json_FM_ISO_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_FM_ISO_1',
+            layerName: 'layer_FM_ISO_1',
+            pane: 'pane_FM_ISO_1',
+            onEachFeature: pop_FM_ISO_1,
+            style: style_FM_ISO_1_0,
+        });
+        bounds_group.addLayer(layer_FM_ISO_1);
+        map.addLayer(layer_FM_ISO_1);
+        function pop_TELLineTR_ISO_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TELLineTR_ISO_2_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 399.000000 ) {
+                return {
+                pane: 'pane_TELLineTR_ISO_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 399.000000 && feature.properties['cost_level'] <= 598.000000 ) {
+                return {
+                pane: 'pane_TELLineTR_ISO_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,167,90,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 598.000000 && feature.properties['cost_level'] <= 797.000000 ) {
+                return {
+                pane: 'pane_TELLineTR_ISO_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,224,171,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 797.000000 && feature.properties['cost_level'] <= 996.000000 ) {
+                return {
+                pane: 'pane_TELLineTR_ISO_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_TELLineTR_ISO_2');
+        map.getPane('pane_TELLineTR_ISO_2').style.zIndex = 402;
+        map.getPane('pane_TELLineTR_ISO_2').style['mix-blend-mode'] = 'normal';
+        var layer_TELLineTR_ISO_2 = new L.geoJson(json_TELLineTR_ISO_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_TELLineTR_ISO_2',
+            layerName: 'layer_TELLineTR_ISO_2',
+            pane: 'pane_TELLineTR_ISO_2',
+            onEachFeature: pop_TELLineTR_ISO_2,
+            style: style_TELLineTR_ISO_2_0,
+        });
+        bounds_group.addLayer(layer_TELLineTR_ISO_2);
+        map.addLayer(layer_TELLineTR_ISO_2);
+        function pop_KP_ISO_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_KP_ISO_3_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 320.000000 ) {
+                return {
+                pane: 'pane_KP_ISO_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 320.000000 && feature.properties['cost_level'] <= 440.000000 ) {
+                return {
+                pane: 'pane_KP_ISO_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,146,75,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 440.000000 && feature.properties['cost_level'] <= 560.000000 ) {
+                return {
+                pane: 'pane_KP_ISO_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,199,124,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 560.000000 && feature.properties['cost_level'] <= 680.000000 ) {
+                return {
+                pane: 'pane_KP_ISO_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,234,194,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 680.000000 && feature.properties['cost_level'] <= 800.000000 ) {
+                return {
+                pane: 'pane_KP_ISO_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_KP_ISO_3');
+        map.getPane('pane_KP_ISO_3').style.zIndex = 403;
+        map.getPane('pane_KP_ISO_3').style['mix-blend-mode'] = 'normal';
+        var layer_KP_ISO_3 = new L.geoJson(json_KP_ISO_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_KP_ISO_3',
+            layerName: 'layer_KP_ISO_3',
+            pane: 'pane_KP_ISO_3',
+            onEachFeature: pop_KP_ISO_3,
+            style: style_KP_ISO_3_0,
+        });
+        bounds_group.addLayer(layer_KP_ISO_3);
+        map.addLayer(layer_KP_ISO_3);
+        function pop_TELLineTK_ISO_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TELLineTK_ISO_4_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 320.000000 ) {
+                return {
+                pane: 'pane_TELLineTK_ISO_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 320.000000 && feature.properties['cost_level'] <= 440.000000 ) {
+                return {
+                pane: 'pane_TELLineTK_ISO_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,146,75,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 440.000000 && feature.properties['cost_level'] <= 560.000000 ) {
+                return {
+                pane: 'pane_TELLineTK_ISO_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,199,124,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 560.000000 && feature.properties['cost_level'] <= 680.000000 ) {
+                return {
+                pane: 'pane_TELLineTK_ISO_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,234,194,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 680.000000 && feature.properties['cost_level'] <= 800.000000 ) {
+                return {
+                pane: 'pane_TELLineTK_ISO_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_TELLineTK_ISO_4');
+        map.getPane('pane_TELLineTK_ISO_4').style.zIndex = 404;
+        map.getPane('pane_TELLineTK_ISO_4').style['mix-blend-mode'] = 'normal';
+        var layer_TELLineTK_ISO_4 = new L.geoJson(json_TELLineTK_ISO_4, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_TELLineTK_ISO_4',
+            layerName: 'layer_TELLineTK_ISO_4',
+            pane: 'pane_TELLineTK_ISO_4',
+            onEachFeature: pop_TELLineTK_ISO_4,
+            style: style_TELLineTK_ISO_4_0,
+        });
+        bounds_group.addLayer(layer_TELLineTK_ISO_4);
+        map.addLayer(layer_TELLineTK_ISO_4);
+        function pop_TELLineMP_ISO_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TELLineMP_ISO_5_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 399.000000 ) {
+                return {
+                pane: 'pane_TELLineMP_ISO_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 399.000000 && feature.properties['cost_level'] <= 598.000000 ) {
+                return {
+                pane: 'pane_TELLineMP_ISO_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,167,90,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 598.000000 && feature.properties['cost_level'] <= 797.000000 ) {
+                return {
+                pane: 'pane_TELLineMP_ISO_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,224,171,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 797.000000 && feature.properties['cost_level'] <= 996.000000 ) {
+                return {
+                pane: 'pane_TELLineMP_ISO_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_TELLineMP_ISO_5');
+        map.getPane('pane_TELLineMP_ISO_5').style.zIndex = 405;
+        map.getPane('pane_TELLineMP_ISO_5').style['mix-blend-mode'] = 'normal';
+        var layer_TELLineMP_ISO_5 = new L.geoJson(json_TELLineMP_ISO_5, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_TELLineMP_ISO_5',
+            layerName: 'layer_TELLineMP_ISO_5',
+            pane: 'pane_TELLineMP_ISO_5',
+            onEachFeature: pop_TELLineMP_ISO_5,
+            style: style_TELLineMP_ISO_5_0,
+        });
+        bounds_group.addLayer(layer_TELLineMP_ISO_5);
+        map.addLayer(layer_TELLineMP_ISO_5);
+        function pop_TELLineMT_ISO_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TELLineMT_ISO_6_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 399.000000 ) {
+                return {
+                pane: 'pane_TELLineMT_ISO_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 399.000000 && feature.properties['cost_level'] <= 598.000000 ) {
+                return {
+                pane: 'pane_TELLineMT_ISO_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,167,90,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 598.000000 && feature.properties['cost_level'] <= 797.000000 ) {
+                return {
+                pane: 'pane_TELLineMT_ISO_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,224,171,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 797.000000 && feature.properties['cost_level'] <= 996.000000 ) {
+                return {
+                pane: 'pane_TELLineMT_ISO_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_TELLineMT_ISO_6');
+        map.getPane('pane_TELLineMT_ISO_6').style.zIndex = 406;
+        map.getPane('pane_TELLineMT_ISO_6').style['mix-blend-mode'] = 'normal';
+        var layer_TELLineMT_ISO_6 = new L.geoJson(json_TELLineMT_ISO_6, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_TELLineMT_ISO_6',
+            layerName: 'layer_TELLineMT_ISO_6',
+            pane: 'pane_TELLineMT_ISO_6',
+            onEachFeature: pop_TELLineMT_ISO_6,
+            style: style_TELLineMT_ISO_6_0,
+        });
+        bounds_group.addLayer(layer_TELLineMT_ISO_6);
+        map.addLayer(layer_TELLineMT_ISO_6);
+        function pop_S_ISO_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_S_ISO_7_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 399.000000 ) {
+                return {
+                pane: 'pane_S_ISO_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 399.000000 && feature.properties['cost_level'] <= 598.000000 ) {
+                return {
+                pane: 'pane_S_ISO_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,167,90,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 598.000000 && feature.properties['cost_level'] <= 797.000000 ) {
+                return {
+                pane: 'pane_S_ISO_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,224,171,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 797.000000 && feature.properties['cost_level'] <= 996.000000 ) {
+                return {
+                pane: 'pane_S_ISO_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_S_ISO_7');
+        map.getPane('pane_S_ISO_7').style.zIndex = 407;
+        map.getPane('pane_S_ISO_7').style['mix-blend-mode'] = 'normal';
+        var layer_S_ISO_7 = new L.geoJson(json_S_ISO_7, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_S_ISO_7',
+            layerName: 'layer_S_ISO_7',
+            pane: 'pane_S_ISO_7',
+            onEachFeature: pop_S_ISO_7,
+            style: style_S_ISO_7_0,
+        });
+        bounds_group.addLayer(layer_S_ISO_7);
+        map.addLayer(layer_S_ISO_7);
+        function pop_TELLineB_ISO_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cost_level'] !== null ? autolinker.link(feature.properties['cost_level'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TELLineB_ISO_8_0(feature) {
+            if (feature.properties['cost_level'] >= 200.000000 && feature.properties['cost_level'] <= 320.000000 ) {
+                return {
+                pane: 'pane_TELLineB_ISO_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 320.000000 && feature.properties['cost_level'] <= 440.000000 ) {
+                return {
+                pane: 'pane_TELLineB_ISO_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,146,75,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 440.000000 && feature.properties['cost_level'] <= 560.000000 ) {
+                return {
+                pane: 'pane_TELLineB_ISO_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,199,124,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 560.000000 && feature.properties['cost_level'] <= 680.000000 ) {
+                return {
+                pane: 'pane_TELLineB_ISO_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,234,194,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['cost_level'] >= 680.000000 && feature.properties['cost_level'] <= 800.000000 ) {
+                return {
+                pane: 'pane_TELLineB_ISO_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_TELLineB_ISO_8');
+        map.getPane('pane_TELLineB_ISO_8').style.zIndex = 408;
+        map.getPane('pane_TELLineB_ISO_8').style['mix-blend-mode'] = 'normal';
+        var layer_TELLineB_ISO_8 = new L.geoJson(json_TELLineB_ISO_8, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_TELLineB_ISO_8',
+            layerName: 'layer_TELLineB_ISO_8',
+            pane: 'pane_TELLineB_ISO_8',
+            onEachFeature: pop_TELLineB_ISO_8,
+            style: style_TELLineB_ISO_8_0,
+        });
+        bounds_group.addLayer(layer_TELLineB_ISO_8);
+        map.addLayer(layer_TELLineB_ISO_8);
+        function pop_TELLineall_buildings_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['code'] !== null ? autolinker.link(feature.properties['code'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fclass'] !== null ? autolinker.link(feature.properties['fclass'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">name</th>\
+                        <td>' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Class</strong><br />' + (feature.properties['Class'] !== null ? autolinker.link(feature.properties['Class'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TELLineall_buildings_9_0(feature) {
+            switch(String(feature.properties['Class'])) {
+                case 'Business':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(167,109,206,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Civic':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(134,0,16,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Education':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(1,255,242,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Healthcare':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,0,35,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Mixed Use':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,1,204,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Others':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(150,150,150,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Private Residential':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,149,1,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Public Residential':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,195,99,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Religious':
+                    return {
+                pane: 'pane_TELLineall_buildings_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(19,46,143,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_TELLineall_buildings_9');
+        map.getPane('pane_TELLineall_buildings_9').style.zIndex = 409;
+        map.getPane('pane_TELLineall_buildings_9').style['mix-blend-mode'] = 'normal';
+        var layer_TELLineall_buildings_9 = new L.geoJson(json_TELLineall_buildings_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TELLineall_buildings_9',
+            layerName: 'layer_TELLineall_buildings_9',
+            pane: 'pane_TELLineall_buildings_9',
+            onEachFeature: pop_TELLineall_buildings_9,
+            style: style_TELLineall_buildings_9_0,
+        });
+        bounds_group.addLayer(layer_TELLineall_buildings_9);
+        map.addLayer(layer_TELLineall_buildings_9);
+        function pop_TELLineTELStage4_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TELLineTELStage4_10_0() {
+            return {
+                pane: 'pane_TELLineTELStage4_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,25,53,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_TELLineTELStage4_10');
+        map.getPane('pane_TELLineTELStage4_10').style.zIndex = 410;
+        map.getPane('pane_TELLineTELStage4_10').style['mix-blend-mode'] = 'normal';
+        var layer_TELLineTELStage4_10 = new L.geoJson(json_TELLineTELStage4_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TELLineTELStage4_10',
+            layerName: 'layer_TELLineTELStage4_10',
+            pane: 'pane_TELLineTELStage4_10',
+            onEachFeature: pop_TELLineTELStage4_10,
+            style: style_TELLineTELStage4_10_0,
+        });
+        bounds_group.addLayer(layer_TELLineTELStage4_10);
+        map.addLayer(layer_TELLineTELStage4_10);
+        function pop_MRTEntranceStage4_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STN_N'] !== null ? autolinker.link(feature.properties['STN_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EXIT_N'] !== null ? autolinker.link(feature.properties['EXIT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MRTEntranceStage4_11_0() {
+            return {
+                pane: 'pane_MRTEntranceStage4_11',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,246,0,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_MRTEntranceStage4_11');
+        map.getPane('pane_MRTEntranceStage4_11').style.zIndex = 411;
+        map.getPane('pane_MRTEntranceStage4_11').style['mix-blend-mode'] = 'normal';
+        var layer_MRTEntranceStage4_11 = new L.geoJson(json_MRTEntranceStage4_11, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_MRTEntranceStage4_11',
+            layerName: 'layer_MRTEntranceStage4_11',
+            pane: 'pane_MRTEntranceStage4_11',
+            onEachFeature: pop_MRTEntranceStage4_11,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_MRTEntranceStage4_11_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_MRTEntranceStage4_11);
+        map.addLayer(layer_MRTEntranceStage4_11);
+        setBounds();
+        </script>
+    </body>
+</html>
